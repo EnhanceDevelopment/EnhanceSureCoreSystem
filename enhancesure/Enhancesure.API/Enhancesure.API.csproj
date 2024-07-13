@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Enhancesure.Application\Enhancesure.Application.csproj" />
+    <ProjectReference Include="..\Enhancesure.Infrastructure\Enhancesure.Infrastructure.csproj" />
+    <ProjectReference Include="..\Enhancesure.Persistance\Enhancesure.Persistance.csproj" />
+  </ItemGroup>
+
 </Project>
