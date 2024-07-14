@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Enhancesure.Application\Enhancesure.Application.csproj" />
+    <ProjectReference Include="..\EnhanceSure.Application\EnhanceSure.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\Common\" />
   </ItemGroup>
 
 </Project>

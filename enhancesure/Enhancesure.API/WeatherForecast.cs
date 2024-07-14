@@ -1,4 +1,4 @@
-namespace Enhancesure.API {
+namespace EnhanceSure.API {
     public class WeatherForecast {
         public DateOnly Date { get; set; }
 

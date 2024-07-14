@@ -1,4 +1,4 @@
-﻿namespace Enhancesure.Domain.Entities {
+﻿namespace EnhanceSure.Domain.Entities {
     public class Interviewee {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

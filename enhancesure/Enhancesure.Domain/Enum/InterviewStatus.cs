@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Enhancesure.Domain.Enum;
+namespace EnhanceSure.Domain.Enum;
 public enum InterviewStatus {
+    [Display(Name="Canceled",Description="Canceled")]
     Canceled = 0,
-    Delayed= 1,
-    Success= 2,
+    [Display(Name = "Delayed", Description = "Delayed")]
+    Delayed = 1,
+    [Display(Name = "Success", Description = "Success")]
+    Success = 2,
 }

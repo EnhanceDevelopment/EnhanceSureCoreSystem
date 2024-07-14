@@ -1,5 +1,7 @@
-﻿namespace Enhancesure.Application.Contracts.Common {
-    public interface IGenericRepositoryAsync<T> where T : class {
+﻿namespace EnhanceSure.Application.Contracts.Persistances.Common
+{
+    public interface IGenericRepositoryAsync<T> where T : class
+    {
         Task<T> GetByIdAsync(Guid Id);
         Task<T> GetByIdAsNoTrackingAsync(Guid id);
         Task<List<T>> GetAllAsync();

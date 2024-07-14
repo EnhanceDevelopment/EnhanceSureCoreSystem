@@ -4,10 +4,10 @@ The following tools were used to generate this project:
 - Angular CLI (ng)
 
 The following steps were used to generate this project:
-- Create Angular project with ng: `ng new Enhancesure.NGUI --defaults --skip-install --skip-git --no-standalone `.
-- Create project file (`Enhancesure.NGUI.esproj`).
+- Create Angular project with ng: `ng new EnhanceSure.NGUI --defaults --skip-install --skip-git --no-standalone `.
+- Create project file (`EnhanceSure.NGUI.esproj`).
 - Create `launch.json` to enable debugging.
-- Create `nuget.config` to specify location of the JavaScript Project System SDK (which is used in the first line in `Enhancesure.NGUI.esproj`).
+- Create `nuget.config` to specify location of the JavaScript Project System SDK (which is used in the first line in `EnhanceSure.NGUI.esproj`).
 - Update package.json to add `jest-editor-support`.
 - Update `start` script in `package.json` to specify host.
 - Add `karma.conf.js` for unit tests.
