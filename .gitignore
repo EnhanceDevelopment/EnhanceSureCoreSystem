@@ -5,9 +5,6 @@
 
 **/bin/**
 **/obj/**
-package.json
-package-lock.json
-node_modules
 
 /enhancesure/.vs
 /enhancesure/Enhancesure.NGUI/.vscode
