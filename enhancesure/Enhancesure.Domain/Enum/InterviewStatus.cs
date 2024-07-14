@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Net.WebSockets;
 
 namespace EnhanceSure.Domain.Enum;
 public enum InterviewStatus {
