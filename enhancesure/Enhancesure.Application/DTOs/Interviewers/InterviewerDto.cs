@@ -1,5 +1,9 @@
-﻿namespace EnhanceSure.Application.DTOs {
-    public class InterviewerDto {
+﻿using EnhanceSure.Application.DTOs.Common;
+
+namespace EnhanceSure.Application.DTOs.Interviewers
+{
+    public class InterviewerDto:BaseDto
+    {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

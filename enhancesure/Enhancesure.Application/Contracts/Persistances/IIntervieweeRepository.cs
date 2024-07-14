@@ -2,7 +2,5 @@
 using EnhanceSure.Domain.Entities;
 
 namespace EnhanceSure.Application.Contracts.Persistances;
-public interface IInterviewer:IGenericRepositoryAsync<Interviewer> {
-    
-
+public interface IIntervieweeRepository:IGenericRepositoryAsync<Interviewee> {
 }

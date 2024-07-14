@@ -1,5 +1,7 @@
-﻿namespace EnhanceSure.Domain.Entities {
-    public class Interviewee {
+﻿using EnhanceSure.Domain.Common;
+
+namespace EnhanceSure.Domain.Entities {
+    public class Interviewee:BaseEntity {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
