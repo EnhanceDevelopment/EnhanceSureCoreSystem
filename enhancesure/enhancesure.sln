@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{4DF40380-ACA5-44FA-88DA-156D918C7EB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhancesure.Application", "Enhancesure.Application\Enhancesure.Application.csproj", "{5AE5F9FE-1F2F-49AB-ABE7-ECB0ECBA6460}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnhanceSure.Application", "Enhancesure.Application\EnhanceSure.Application.csproj", "{5AE5F9FE-1F2F-49AB-ABE7-ECB0ECBA6460}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhancesure.Domain", "Enhancesure.Domain\Enhancesure.Domain.csproj", "{F86F3681-AF20-49F6-BF05-E1C09022E89E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnhanceSure.Domain", "Enhancesure.Domain\EnhanceSure.Domain.csproj", "{F86F3681-AF20-49F6-BF05-E1C09022E89E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhancesure.API", "Enhancesure.API\Enhancesure.API.csproj", "{083BF638-D4C0-4E57-821B-71A2D6085404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnhanceSure.API", "Enhancesure.API\EnhanceSure.API.csproj", "{083BF638-D4C0-4E57-821B-71A2D6085404}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{3F310B6B-18B3-4368-8A6D-BF166A46FD61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhancesure.Infrastructure", "Enhancesure.Infrastructure\Enhancesure.Infrastructure.csproj", "{EE247A1D-696F-4E51-809A-A2B19D847988}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnhanceSure.Infrastructure", "Enhancesure.Infrastructure\EnhanceSure.Infrastructure.csproj", "{EE247A1D-696F-4E51-809A-A2B19D847988}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhancesure.Persistance", "Enhancesure.Persistance\Enhancesure.Persistance.csproj", "{C15088B5-5E34-4747-B302-01862E434970}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnhanceSure.Persistance", "Enhancesure.Persistance\EnhanceSure.Persistance.csproj", "{C15088B5-5E34-4747-B302-01862E434970}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Enhancesure.NGUI", "Enhancesure.NGUI\Enhancesure.NGUI.esproj", "{40DCE600-0B24-4DB8-899B-A0C9BFA2F73C}"
 EndProject

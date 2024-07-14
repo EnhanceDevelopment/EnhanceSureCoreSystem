@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Enhancesure.Domain\Enhancesure.Domain.csproj" />
+    <ProjectReference Include="..\EnhanceSure.Domain\EnhanceSure.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Persistances\" />
-    <Folder Include="DTOs\" />
+    <Folder Include="Features\" />
     <Folder Include="Profiles\" />
     <Folder Include="Shared\Responses\" />
     <Folder Include="Shared\Requests\" />

@@ -1,7 +1,7 @@
-﻿using Enhancesure.Domain.Common;
-using Enhancesure.Domain.Enum;
+﻿using EnhanceSure.Domain.Common;
+using EnhanceSure.Domain.Enum;
 
-namespace Enhancesure.Domain.Entities {
+namespace EnhanceSure.Domain.Entities {
     public class InterviewSchedule:BaseEntity {
         public Guid Interviewer { get; set; }
         public Guid Interviewee { get; set; }
