@@ -7,6 +7,7 @@ namespace EnhanceSure.Domain.Entities {
         public Guid Interviewee { get; set; }
         public DateTime InterviewDateTime { get; set; }
         public InterviewStatus Status { get; set; }
+        public bool IsDeleted { get; set; }
         public int RemainingDays { 
             get {
                 if(InterviewDateTime> DateTime.Now)
