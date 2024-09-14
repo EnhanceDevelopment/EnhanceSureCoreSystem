@@ -9,7 +9,7 @@ namespace EnhanceSure.Application.Features.Interviewees.Handler.Commands {
     public class CreateIntervieweeCommandHandler: RequestHandlerBase, IRequestHandler<CreateIntevieweeCommand, AppResponse<Guid>> {
         private readonly IIntervieweeRepository _interviewee;
         private readonly IMapper _mapper;
-        protected CreateIntervieweeCommandHandler(IMapper mapper, IIntervieweeRepository interviewee)
+        public CreateIntervieweeCommandHandler(IMapper mapper, IIntervieweeRepository interviewee)
         {
             _mapper = mapper;
             _interviewee = interviewee;

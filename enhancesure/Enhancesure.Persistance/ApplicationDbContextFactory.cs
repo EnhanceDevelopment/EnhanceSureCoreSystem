@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using System.Text.RegularExpressions;
 
 namespace EnhanceSure.Persistance {
     public class ApplicationDbContextFactory:IDesignTimeDbContextFactory<ApplicationDbContext> {
@@ -16,6 +17,25 @@ namespace EnhanceSure.Persistance {
             builder.UseSqlServer(connectionString);
             return new ApplicationDbContext(builder.Options);
 
+        }
+        private string ParseEnvironment(string[] args)
+        {
+            var regex = new Regex(@"--environment \w+");
+            var arguments = string.Join(" ", args);
+
+            var match = regex.Match(arguments);
+
+            if(match.Success)
+            {
+                var splitted = match.Value.Split(' ');
+
+                if(splitted.Length > 1)
+                {
+                    return splitted[1];
+                }
+            }
+
+            return "Dev";
         }
     }
 }

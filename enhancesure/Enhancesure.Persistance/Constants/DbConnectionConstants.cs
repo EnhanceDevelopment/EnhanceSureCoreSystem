@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EnhanceSure.Persistance.Constants {
-    internal static class DbConnectionConstants {
+    public static class DbConnectionConstants {
         public const string ConnectionStringName = "EnhanceSureDbConnection";
     }
 }

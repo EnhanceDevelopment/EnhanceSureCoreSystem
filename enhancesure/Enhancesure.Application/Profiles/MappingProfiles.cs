@@ -7,9 +7,7 @@ namespace EnhanceSure.Application.Profiles {
     public class MappingProfile: Profile {
         public MappingProfile()
         {
-            CreateMap<Interviewee,CreateIntervieweeDto>();
-            CreateMap<Interviewee,CreateIntervieweeDto>();
-            CreateMap<Interviewee,CreateIntervieweeDto>();
+            CreateMap<Interviewee, GetIntervieweeDto>().ReverseMap();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BindraSawMill.Application.Shared.Responses;
 using EnhanceSure.Application.DTOs.Interviewees;
 using EnhanceSure.Application.Features.Interviewees.Requests.Command;
+using EnhanceSure.Application.Features.Interviewees.Requests.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,13 @@ namespace EnhanceSure.API.Controllers {
         {
             var command = new CreateIntevieweeCommand() { CreateIntervieweeDto = interviewee };
             var response = await _mediator.Send(command);
+            return Ok(response);
+        }
+        [HttpGet("{intervieweeId}")]
+        public async Task<ActionResult<AppResponse<Guid>>> GetIntervieweeAsync(Guid intervieweeId)
+        {
+            var query = new GetIntervieweeQuery() { Id=intervieweeId};
+            var response = await _mediator.Send(query);
             return Ok(response);
         }
     }
