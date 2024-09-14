@@ -1,0 +1,12 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.Net.WebSockets;
+
+namespace EnhanceSure.Domain.Enum;
+public enum InterviewStatus {
+    [Display(Name="Canceled",Description="Canceled")]
+    Canceled = 0,
+    [Display(Name = "Delayed", Description = "Delayed")]
+    Delayed = 1,
+    [Display(Name = "Success", Description = "Success")]
+    Success = 2,
+}

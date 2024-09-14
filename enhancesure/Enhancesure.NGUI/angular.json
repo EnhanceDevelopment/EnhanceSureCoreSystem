@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Enhancesure.NGUI": {
+    "EnhanceSure.NGUI": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Enhancesure.NGUI:build:production"
+              "buildTarget": "EnhanceSure.NGUI:build:production"
             },
             "development": {
-              "buildTarget": "Enhancesure.NGUI:build:development"
+              "buildTarget": "EnhanceSure.NGUI:build:development"
             }
           },
           "defaultConfiguration": "development"

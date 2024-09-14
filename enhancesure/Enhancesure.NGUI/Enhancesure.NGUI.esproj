@@ -5,6 +5,6 @@
     <!-- Allows the build (or compile) script located on package.json to run on Build -->
     <ShouldRunBuildScript>false</ShouldRunBuildScript>
     <!-- Folder where production build objects will be placed -->
-    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\Enhancesure.NGUI\browser\</BuildOutputFolder>
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\EnhanceSure.NGUI\browser\</BuildOutputFolder>
   </PropertyGroup>
 </Project>
