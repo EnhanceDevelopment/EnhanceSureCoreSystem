@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EnhanceSure.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class initial_migration : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,17 +15,17 @@ namespace EnhanceSure.Persistance.Migrations
                 name: "tbl_Interviewees",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier ", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    EmailAddress = table.Column<string>(type: "uniqueidentifier ", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(225)", maxLength: 225, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uniqueidentifier ", nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier ", nullable: false)
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,17 +36,17 @@ namespace EnhanceSure.Persistance.Migrations
                 name: "tbl_Interviewers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier ", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    EmailAddress = table.Column<string>(type: "uniqueidentifier ", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(225)", maxLength: 225, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uniqueidentifier ", nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier ", nullable: false)
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,16 +57,16 @@ namespace EnhanceSure.Persistance.Migrations
                 name: "tbl_InterviewSchedules",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier ", nullable: false),
-                    Interviewer = table.Column<Guid>(type: "uniqueidentifier ", nullable: false),
-                    Interviewee = table.Column<Guid>(type: "uniqueidentifier ", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Interviewer = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Interviewee = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     InterviewDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", maxLength: 2, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uniqueidentifier ", nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier ", nullable: false)
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {

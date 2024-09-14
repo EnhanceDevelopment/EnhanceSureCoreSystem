@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnhanceSure.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240727083916_initial_migration")]
-    partial class initial_migration
+    [Migration("20240914105412_initial migration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.7")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -29,22 +29,22 @@ namespace EnhanceSure.Persistance.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("InterviewDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("Interviewee")
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("Interviewer")
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -53,7 +53,7 @@ namespace EnhanceSure.Persistance.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("LastModifiedBy")
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
                         .HasMaxLength(2)
@@ -68,7 +68,7 @@ namespace EnhanceSure.Persistance.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -79,11 +79,12 @@ namespace EnhanceSure.Persistance.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier ");
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -94,7 +95,7 @@ namespace EnhanceSure.Persistance.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("LastModifiedBy")
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -120,7 +121,7 @@ namespace EnhanceSure.Persistance.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -131,11 +132,12 @@ namespace EnhanceSure.Persistance.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier ");
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -146,7 +148,7 @@ namespace EnhanceSure.Persistance.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("LastModifiedBy")
-                        .HasColumnType("uniqueidentifier ");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LastName")
                         .IsRequired()

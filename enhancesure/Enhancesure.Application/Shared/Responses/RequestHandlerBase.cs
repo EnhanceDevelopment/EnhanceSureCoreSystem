@@ -16,11 +16,11 @@ namespace BindraSawMill.Application.Shared.Responses {
             _serviceProvider = serviceProvider;
         }
 
-        protected IDbConnection CreateConnection()
+        protected IDbConnection createconnection()
         {
             if(_serviceProvider == null)
             {
-                throw new InvalidOperationException("RequestHandlerBase needs to be initialed with IServiceProvider in order to request this feature");
+                throw new InvalidOperationException("requesthandlerbase needs to be initialed with iserviceprovider in order to request this feature");
             }
             var factory = _serviceProvider.GetService<IDbConnectionFactory>();
             return factory?.CreateConnection();
