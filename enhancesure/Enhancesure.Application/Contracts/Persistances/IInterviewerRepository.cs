@@ -1,4 +1,4 @@
-﻿using EnhanceSure.Application.Contracts.Persistances.Common;
+﻿using Domain.Interfaces;
 using EnhanceSure.Domain.Entities;
 
 namespace EnhanceSure.Application.Contracts.Persistances;

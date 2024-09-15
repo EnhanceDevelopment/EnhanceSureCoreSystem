@@ -1,4 +1,4 @@
-﻿using EnhanceSure.Application.Contracts.Persistances.Common;
+﻿using Domain.Interfaces;
 using EnhanceSure.Domain.Common;
 using EnhanceSure.Persistance.DbContexts;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +60,12 @@ namespace EnhanceSure.Persistance.Repositories {
             _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.Entry(entity).CurrentValues.SetValues(entity);
             return Task.CompletedTask;
+        }
+        public IQueryable<T> Entities => throw new NotImplementedException();
+
+        public IQueryable<T> AsQueryable()
+        {
+            throw new NotImplementedException();
         }
     }
 }

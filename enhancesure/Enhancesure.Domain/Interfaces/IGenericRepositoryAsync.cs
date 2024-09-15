@@ -1,7 +1,9 @@
-﻿namespace EnhanceSure.Application.Contracts.Persistances.Common
+﻿using EnhanceSure.Domain.Common;
+using EnhanceSure.Domain.Interfaces;
+
+namespace Domain.Interfaces
 {
-    public interface IGenericRepositoryAsync<T> where T : class
-    {
+    public interface IGenericRepositoryAsync<T>: IVirtualRepositoryAsync<T> where T : BaseEntity {
         Task<T> GetByIdAsync(Guid Id);
         Task<T> GetByIdAsNoTrackingAsync(Guid id);
         Task<List<T>> GetAllAsync();
