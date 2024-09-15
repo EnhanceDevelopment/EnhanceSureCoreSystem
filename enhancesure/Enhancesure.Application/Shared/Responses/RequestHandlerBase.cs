@@ -1,8 +1,8 @@
-﻿using Domain.Interfaces;
+﻿using EnhanceSure.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data;
 
-namespace BindraSawMill.Application.Shared.Responses {
+namespace EnhanceSure.Application.Shared.Responses {
     public class RequestHandlerBase {
         private readonly IServiceProvider _serviceProvider;
 
@@ -16,15 +16,15 @@ namespace BindraSawMill.Application.Shared.Responses {
             _serviceProvider=serviceProvider;
         }
 
-        //protected IDbConnection createconnection()
-        //{
-        //    if(_serviceProvider == null)
-        //    {
-        //        throw new InvalidOperationException("requesthandlerbase needs to be initialed with iserviceprovider in order to request this feature");
-        //    }
-        //    var factory = _serviceProvider.GetService<IDbConnectionFactory>();
-        //    return factory?.CreateConnection();
-        //}
+        protected IDbConnection createconnection()
+        {
+            if(_serviceProvider==null)
+            {
+                throw new InvalidOperationException("requesthandlerbase needs to be initialed with iserviceprovider in order to request this feature");
+            }
+            var factory = _serviceProvider.GetService<IDbConnectionFactory>();
+            return factory?.CreateConnection();
+        }
 
         public AppResponse<T> Ok<T>(T data, string[] messages = null)
         {

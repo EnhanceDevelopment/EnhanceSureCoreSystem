@@ -1,8 +1,6 @@
 ﻿using EnhanceSure.Domain.Common;
-using EnhanceSure.Domain.Interfaces;
 
-namespace Domain.Interfaces
-{
+namespace EnhanceSure.Domain.Interfaces.Common {
     public interface IGenericRepositoryAsync<T>: IVirtualRepositoryAsync<T> where T : BaseEntity {
         Task<T> GetByIdAsync(Guid Id);
         Task<T> GetByIdAsNoTrackingAsync(Guid id);

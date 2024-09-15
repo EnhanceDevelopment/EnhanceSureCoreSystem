@@ -1,4 +1,4 @@
-﻿namespace BindraSawMill.Application.Shared.Responses {
+﻿namespace EnhanceSure.Application.Shared.Responses {
     public class BaseCommandResponse {
         public Guid Id { get; set; }
         public string Message { get; set; }

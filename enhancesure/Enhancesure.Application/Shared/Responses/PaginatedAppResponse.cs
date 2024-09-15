@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BindraSawMill.Application.Shared.Responses {
+namespace EnhanceSure.Application.Shared.Responses {
     public class PaginatedAppResponse<T>: AppResponse<T> {
 
         public class PaginatedWrapper {
