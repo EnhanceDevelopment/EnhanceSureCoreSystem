@@ -1,11 +1,8 @@
-﻿using EnhanceSure.Application.Contracts.Persistances.DbContext;
-using EnhanceSure.Domain.Common;
+﻿using EnhanceSure.Domain.Common;
 using EnhanceSure.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Data;
 namespace EnhanceSure.Persistance.DbContexts {
-    //public class ApplicationDbContext: DbContext, IApplicationDbContext {
     public class ApplicationDbContext: DbContext{
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -24,7 +21,6 @@ namespace EnhanceSure.Persistance.DbContexts {
         public DbSet<Interviewee> Interviewees { get; set; }
         public DbSet<Interviewer> Intervieweers { get; set; }
         public DbSet<InterviewSchedule> InterviewSchedules { get; set; }
-        // public IDbConnection Connection => Database.GetDbConnection();
 
         //for Datatype information see: https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -6,11 +6,20 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 
 namespace EnhanceSure.Persistance.Connections {
-    public class DbConnectionFactory:IDbConnectionFactory,IDisposable  {
+    public class DbConnectionFactory:IDbConnectionFactory  {
         private readonly IDbConnection _connection;
+        private readonly string _connectionString;
         public DbConnectionFactory(IConfiguration configuration)
         {
-            _connection = new SqlConnection(configuration.GetConnectionString(DbConnectionConstants.ConnectionStringName));
+            try
+            {
+                _connectionString=configuration.GetConnectionString(DbConnectionConstants.ConnectionStringName)??string.Empty;
+                _connection=new SqlConnection(_connectionString);
+            } catch(Exception ex)
+            {
+
+                throw new Exception($"Unable to connect to database. Please, contact your administrator.\n Error: {ex.Message}");
+            }
         }
         public async Task<IReadOnlyList<T>> QueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
         {
