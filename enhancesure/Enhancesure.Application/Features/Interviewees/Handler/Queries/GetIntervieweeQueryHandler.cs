@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using BindraSawMill.Application.Shared.Responses;
-using Domain.Interfaces;
 using EnhanceSure.Application.Contracts.Persistances;
 using EnhanceSure.Application.DTOs.Interviewees;
 using EnhanceSure.Application.Features.Interviewees.Requests.Queries;
+using EnhanceSure.Application.Shared.Responses;
 using EnhanceSure.Domain.Entities;
+using EnhanceSure.Domain.Interfaces;
 using MediatR;
 
 namespace EnhanceSure.Application.Features.Interviewees.Handler.Queries {
@@ -28,7 +28,7 @@ namespace EnhanceSure.Application.Features.Interviewees.Handler.Queries {
             {
                 IntervieweeId = $"{request.Id}"
             };
-            var resultQuery = await _connection.QuerySingleAsync<Interviewee>(query,parameters);
+            var resultQuery = await _connection.QueryFirstOrDefaultAsync<Interviewee>(query,parameters);
             return Ok(_mapper.Map<GetIntervieweeDto>(resultQuery));
         }
     }

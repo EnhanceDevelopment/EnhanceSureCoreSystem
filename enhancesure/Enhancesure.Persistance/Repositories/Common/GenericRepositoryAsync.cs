@@ -1,10 +1,11 @@
-﻿using Domain.Interfaces;
-using EnhanceSure.Domain.Common;
+﻿using EnhanceSure.Domain.Common;
+using EnhanceSure.Domain.Interfaces.Common;
 using EnhanceSure.Persistance.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace EnhanceSure.Persistance.Repositories {
-    public class GenericRepositoryAsync<T>: IGenericRepositoryAsync<T> where T : BaseEntity {
+namespace EnhanceSure.Persistance.Repositories.Common {
+    public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : BaseEntity
+    {
         private readonly ApplicationDbContext _dbContext;
 
         public GenericRepositoryAsync(ApplicationDbContext dbContext)
@@ -14,9 +15,9 @@ namespace EnhanceSure.Persistance.Repositories {
 
         public async Task<T> AddAsync(T entity)
         {
-            if(entity is BaseEntity baseEntity)
+            if (entity is BaseEntity baseEntity)
             {
-                if(baseEntity.Id == Guid.Empty)
+                if (baseEntity.Id == Guid.Empty)
                 {
                     baseEntity.Id = Guid.NewGuid();
                 }

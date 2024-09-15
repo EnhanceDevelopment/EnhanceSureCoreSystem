@@ -1,11 +1,11 @@
-﻿using BindraSawMill.Application.Shared.Request;
-using EnhanceSure.Application.DTOs.Interviewees;
+﻿using EnhanceSure.Application.DTOs.Interviewees;
+using EnhanceSure.Application.DTOs.Interviewers;
+using EnhanceSure.Application.Shared.Request;
 using EnhanceSure.Domain.Entities;
 using MediatR;
 
-namespace EnhanceSure.Application.Features.Interviewees.Requests.Command {
-    public class CreateIntevieweeCommand: AppRequest<Guid>
-    {
+namespace EnhanceSure.Application.Features.Interviewees.Requests.Commands {
+    public class CreateIntevieweeCommand: AppRequest<IntervieweeDto> {
         public CreateIntervieweeDto CreateIntervieweeDto { get; set; }
     }
 }

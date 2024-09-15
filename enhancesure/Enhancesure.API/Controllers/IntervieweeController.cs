@@ -1,7 +1,7 @@
-﻿using BindraSawMill.Application.Shared.Responses;
-using EnhanceSure.Application.DTOs.Interviewees;
-using EnhanceSure.Application.Features.Interviewees.Requests.Command;
+﻿using EnhanceSure.Application.DTOs.Interviewees;
+using EnhanceSure.Application.Features.Interviewees.Requests.Commands;
 using EnhanceSure.Application.Features.Interviewees.Requests.Queries;
+using EnhanceSure.Application.Shared.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +19,7 @@ namespace EnhanceSure.API.Controllers {
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<AppResponse<Guid>>> Post([FromBody] CreateIntervieweeDto interviewee)
+        public async Task<ActionResult<AppResponse<Guid>>> CreateIntervieweeAsync([FromBody] CreateIntervieweeDto interviewee)
         {
             var command = new CreateIntevieweeCommand() { CreateIntervieweeDto = interviewee };
             var response = await _mediator.Send(command);
@@ -31,6 +31,6 @@ namespace EnhanceSure.API.Controllers {
             var query = new GetIntervieweeQuery() { Id=intervieweeId};
             var response = await _mediator.Send(query);
             return Ok(response);
-        }
+        }        
     }
 }

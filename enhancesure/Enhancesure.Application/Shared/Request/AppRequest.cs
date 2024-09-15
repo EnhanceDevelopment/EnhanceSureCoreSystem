@@ -1,7 +1,7 @@
-﻿using BindraSawMill.Application.Shared.Responses;
+﻿using EnhanceSure.Application.Shared.Responses;
 using MediatR;
 
-namespace BindraSawMill.Application.Shared.Request {
+namespace EnhanceSure.Application.Shared.Request {
     public interface IAppRequest<out T>: IRequest<T> {
         //public AuditUser UpdatedBy { get; set; }
         public Menu Menu { get; set; }

@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Domain.Interfaces;
+using EnhanceSure.Domain.Interfaces;
 using EnhanceSure.Persistance.Constants;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;

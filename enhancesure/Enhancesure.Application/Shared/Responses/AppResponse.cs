@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace BindraSawMill.Application.Shared.Responses {
+namespace EnhanceSure.Application.Shared.Responses {
     public interface IAppResponse {
         public HttpStatusCode StatusCode { get; set; }
         public string[] Messages { get; set; }

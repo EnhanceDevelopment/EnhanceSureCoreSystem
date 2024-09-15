@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Domain.Interfaces {
+namespace EnhanceSure.Domain.Interfaces {
     public interface IDbConnectionFactory: IDisposable {
         IDbConnection CreateConnection();
         Task<IReadOnlyList<T>> QueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default);

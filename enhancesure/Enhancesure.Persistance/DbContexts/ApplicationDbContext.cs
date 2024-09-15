@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace EnhanceSure.Persistance.DbContexts {
     public class ApplicationDbContext: DbContext{
+        public Guid AnnonimousUserId = new Guid();
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
@@ -14,7 +15,10 @@ namespace EnhanceSure.Persistance.DbContexts {
             {
                 entry.Entity.LastModifiedAt=DateTime.Now;
                 if(entry.State==EntityState.Added)
+                {
                     entry.Entity.CreatedAt=DateTime.Now;
+                    //entry.Entity.CreatedBy=LoggedInUser.UserId??AnnonimousUserId;
+                }
             }
             return base.SaveChangesAsync(cancellationToken);
         }
