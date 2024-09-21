@@ -17,7 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Interviewers\" />
+    <Folder Include="Features\Interviewees\Commands\DeleteInterviewee\" />
+    <Folder Include="Features\Interviewees\Commands\UpdateInterviewee\" />
+    <Folder Include="Features\Interviewees\Queries\GetInterviewees\" />
+    <Folder Include="Features\Interviewers\Command\" />
+    <Folder Include="Features\Interviewers\Queries\" />
     <Folder Include="Features\InterviewSchedules\" />
     <Folder Include="Shared\Requests\" />
   </ItemGroup>

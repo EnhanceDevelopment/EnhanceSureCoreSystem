@@ -1,6 +1,6 @@
 ﻿using EnhanceSure.Application.DTOs.Interviewees;
-using EnhanceSure.Application.Features.Interviewees.Requests.Commands;
-using EnhanceSure.Application.Features.Interviewees.Requests.Queries;
+using EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewee;
+using EnhanceSure.Application.Features.Interviewees.Queries.GetInterviewee;
 using EnhanceSure.Application.Shared.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

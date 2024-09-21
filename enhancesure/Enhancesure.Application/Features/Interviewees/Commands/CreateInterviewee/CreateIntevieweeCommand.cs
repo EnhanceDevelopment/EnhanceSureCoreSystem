@@ -4,8 +4,10 @@ using EnhanceSure.Application.Shared.Request;
 using EnhanceSure.Domain.Entities;
 using MediatR;
 
-namespace EnhanceSure.Application.Features.Interviewees.Requests.Commands {
-    public class CreateIntevieweeCommand: AppRequest<IntervieweeDto> {
+namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewee
+{
+    public class CreateIntevieweeCommand : AppRequest<IntervieweeDto>
+    {
         public CreateIntervieweeDto CreateIntervieweeDto { get; set; }
     }
 }

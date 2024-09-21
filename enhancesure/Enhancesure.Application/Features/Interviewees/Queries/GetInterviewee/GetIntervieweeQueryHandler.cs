@@ -1,23 +1,24 @@
 ﻿using AutoMapper;
 using EnhanceSure.Application.Contracts.Persistances;
 using EnhanceSure.Application.DTOs.Interviewees;
-using EnhanceSure.Application.Features.Interviewees.Requests.Queries;
 using EnhanceSure.Application.Shared.Responses;
 using EnhanceSure.Domain.Entities;
 using EnhanceSure.Domain.Interfaces;
 using MediatR;
 
-namespace EnhanceSure.Application.Features.Interviewees.Handler.Queries {
-    public class GetIntervieweeQueryHandler: RequestHandlerBase, IRequestHandler<GetIntervieweeQuery, AppResponse<GetIntervieweeDto>> {
+namespace EnhanceSure.Application.Features.Interviewees.Queries.GetInterviewee
+{
+    public class GetIntervieweeQueryHandler : RequestHandlerBase, IRequestHandler<GetIntervieweeQuery, AppResponse<GetIntervieweeDto>>
+    {
         private readonly IDbConnectionFactory _connection;
         private readonly IIntervieweeRepository _intervieweeRepository;
         private readonly IMapper _mapper;
 
         public GetIntervieweeQueryHandler(IDbConnectionFactory connection, IIntervieweeRepository intervieweeRepository, IMapper mapper)
         {
-            _connection=connection;
-            _intervieweeRepository=intervieweeRepository;
-            _mapper=mapper;
+            _connection = connection;
+            _intervieweeRepository = intervieweeRepository;
+            _mapper = mapper;
         }
 
         public async Task<AppResponse<GetIntervieweeDto>> Handle(GetIntervieweeQuery request, CancellationToken cancellationToken)
@@ -28,7 +29,7 @@ namespace EnhanceSure.Application.Features.Interviewees.Handler.Queries {
             {
                 IntervieweeId = $"{request.Id}"
             };
-            var resultQuery = await _connection.QueryFirstOrDefaultAsync<Interviewee>(query,parameters);
+            var resultQuery = await _connection.QueryFirstOrDefaultAsync<Interviewee>(query, parameters);
             return Ok(_mapper.Map<GetIntervieweeDto>(resultQuery));
         }
     }
