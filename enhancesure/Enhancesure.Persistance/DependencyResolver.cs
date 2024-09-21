@@ -17,7 +17,7 @@ namespace EnhanceSure.Persistance {
             var connectionString = configuration.GetConnectionString(DbConnectionConstants.ConnectionStringName);
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(connectionString)
+            options.UseSqlServer(connectionString), ServiceLifetime.Scoped
             );
 
             services.AddTransient<IDbConnectionFactory>(provider => { return new DbConnectionFactory(configuration); });

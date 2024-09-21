@@ -5,12 +5,9 @@ using EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewee;
 using EnhanceSure.Application.Shared.Responses;
 using EnhanceSure.Domain.Entities;
 using EnhanceSure.Domain.Interfaces.Common;
-using FluentValidation.Results;
 using MediatR;
-using System.Linq;
 
-namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewees
-{
+namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewees {
     public class CreateIntervieweeCommandHandler : RequestHandlerBase, IRequestHandler<CreateIntevieweeCommand, AppResponse<IntervieweeDto>>
     {
         private readonly IIntervieweeRepository _interviewee;
@@ -35,11 +32,6 @@ namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterview
             await _unitOfWork.Commit(cancellationToken);
             response = _mapper.Map<IntervieweeDto>(interviewee);
             return Ok(response, new string[] { "Interviewee created successfully." });
-        }
-
-        private AppResponse<T> BadRequest<T>(List<ValidationFailure> errors)
-        {
-            throw new NotImplementedException();
         }
     }
 }
