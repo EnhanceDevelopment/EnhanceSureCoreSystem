@@ -4,6 +4,7 @@ using EnhanceSure.Application.DTOs.Interviewees;
 using EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewee;
 using EnhanceSure.Application.Shared.Responses;
 using EnhanceSure.Domain.Entities;
+using EnhanceSure.Domain.Interfaces.Common;
 using MediatR;
 
 namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewees
@@ -12,17 +13,21 @@ namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterview
     {
         private readonly IIntervieweeRepository _interviewee;
         private readonly IMapper _mapper;
-        public CreateIntervieweeCommandHandler(IMapper mapper, IIntervieweeRepository interviewee)
+        private readonly IUnitOfWork _unitOfWork;
+        public CreateIntervieweeCommandHandler(IMapper mapper, IIntervieweeRepository interviewee, IUnitOfWork unitOfWork)
         {
-            _mapper = mapper;
-            _interviewee = interviewee;
+            _mapper=mapper;
+            _interviewee=interviewee;
+            _unitOfWork=unitOfWork;
         }
 
         public async Task<AppResponse<IntervieweeDto>> Handle(CreateIntevieweeCommand request, CancellationToken cancellationToken)
         {
+            IntervieweeDto response=new IntervieweeDto();
             var reqData = _mapper.Map<Interviewee>(request.CreateIntervieweeDto);
             var interviewee = await _interviewee.AddAsync(reqData);
-            var response = _mapper.Map<IntervieweeDto>(interviewee);
+            await _unitOfWork.Commit(cancellationToken);
+            response = _mapper.Map<IntervieweeDto>(interviewee);
             return Ok(response, new string[] { "Interviewee created successfully." });
         }
     }

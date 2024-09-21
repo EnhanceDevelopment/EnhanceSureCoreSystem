@@ -23,6 +23,7 @@ namespace EnhanceSure.Persistance {
             services.AddTransient<IDbConnectionFactory>(provider => { return new DbConnectionFactory(configuration); });
             services.AddScoped(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             services.AddScoped(typeof(IVirtualRepositoryAsync<>), typeof(VirtualRepositoryAsync<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IIntervieweeRepository, IntervieweeRepository>();
             services.AddScoped<IInterviewerRepository, InterviewerRepository>();
             return services;

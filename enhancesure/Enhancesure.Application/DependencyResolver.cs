@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace EnhanceSure.Application {
@@ -9,7 +10,7 @@ namespace EnhanceSure.Application {
             //// Register AutoMapper and MediatR for the correct assembly
             services.AddAutoMapper(executingAssembly);        //for all executing Assembly
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));              // for MediatR V>V12.0
-
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             //var intermediateServiceProvider = services.BuildServiceProvider();
             //var configService = intermediateServiceProvider.GetService<IConfigurationService>();

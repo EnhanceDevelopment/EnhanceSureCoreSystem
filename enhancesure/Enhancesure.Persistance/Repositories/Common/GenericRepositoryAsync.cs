@@ -2,6 +2,7 @@
 using EnhanceSure.Domain.Interfaces.Common;
 using EnhanceSure.Persistance.DbContexts;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace EnhanceSure.Persistance.Repositories.Common {
     public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : BaseEntity
@@ -23,7 +24,7 @@ namespace EnhanceSure.Persistance.Repositories.Common {
                 }
             }
             await _dbContext.AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            //await _dbContext.SaveChangesAsync();
             return entity;
         }
 
@@ -56,17 +57,23 @@ namespace EnhanceSure.Persistance.Repositories.Common {
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }
+        //public Task<T?> SingleOrDefaultAsync<T>(Expression<Func<T, bool>> expression, string includeProperties) where T : BaseEntity
+        //{
+        //    var query = _dbContext.Set<T>().AsQueryable();
+
+        //    query=includeProperties.Split(new char[] { ',' },
+        //        StringSplitOptions.RemoveEmptyEntries).Aggregate(query, (current, includeProperty)
+        //        => current.Include(includeProperty));
+
+        //    return query.SingleOrDefaultAsync(expression);
+        //}
         public Task UpdateAsync(T entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.Entry(entity).CurrentValues.SetValues(entity);
             return Task.CompletedTask;
         }
-        public IQueryable<T> Entities => throw new NotImplementedException();
-
-        public IQueryable<T> AsQueryable()
-        {
-            throw new NotImplementedException();
-        }
+        public IQueryable<T> Entities => _dbContext.Set<T>();
+        public IQueryable<T> AsQueryable() => this.Entities.AsQueryable();
     }
 }
