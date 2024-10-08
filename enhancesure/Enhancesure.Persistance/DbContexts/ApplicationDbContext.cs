@@ -25,6 +25,7 @@ namespace EnhanceSure.Persistance.DbContexts {
         public DbSet<Interviewee> Interviewees { get; set; }
         public DbSet<Interviewer> Intervieweers { get; set; }
         public DbSet<InterviewSchedule> InterviewSchedules { get; set; }
+        public DbSet<ErrorLog> ErrorLogs { get; set; }
 
         //for Datatype information see: https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -83,6 +84,15 @@ namespace EnhanceSure.Persistance.DbContexts {
                 mappings.Property(p => p.LastModifiedAt).HasColumnType("datetime2");
                 mappings.Property(p => p.LastModifiedBy).HasColumnType("uniqueidentifier");
 
+            });
+            modelBuilder.Entity((EntityTypeBuilder<ErrorLog> mappings) =>
+            {
+                mappings.ToTable(PersistanceConstants.Tables.sysErrorLog);
+                mappings.Property(p => p.Id).IsRequired().HasColumnType("uniqueidentifier");
+                mappings.Property(p => p.ErrorCode).HasColumnType("nvarchar");
+                mappings.Property(p => p.ErrorMessage).HasColumnType("uniqueidentifier").HasMaxLength(2048);
+                mappings.Property(p => p.UserName).HasColumnType("nvarchar").HasMaxLength(20);
+                mappings.Property(p => p.CreatedAtUct).HasColumnType("int").HasMaxLength(2);
             });
         }
     }
