@@ -7,8 +7,7 @@ using EnhanceSure.Domain.Entities;
 using EnhanceSure.Domain.Interfaces.Common;
 using MediatR;
 
-namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewees
-{
+namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewees {
     public class CreateIntervieweeCommandHandler : RequestHandlerBase, IRequestHandler<CreateIntevieweeCommand, AppResponse<IntervieweeDto>>
     {
         private readonly IIntervieweeRepository _interviewee;
@@ -24,6 +23,10 @@ namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterview
         public async Task<AppResponse<IntervieweeDto>> Handle(CreateIntevieweeCommand request, CancellationToken cancellationToken)
         {
             IntervieweeDto response=new IntervieweeDto();
+            var validator = new CreateIntervieweeCommandValidator();
+            var result= await validator.ValidateAsync(request, cancellationToken);
+            if(!result.IsValid)
+                return BadRequest<IntervieweeDto>(result.Errors.Select(i => i.ErrorMessage).ToArray<string>());
             var reqData = _mapper.Map<Interviewee>(request.CreateIntervieweeDto);
             var interviewee = await _interviewee.AddAsync(reqData);
             await _unitOfWork.Commit(cancellationToken);
