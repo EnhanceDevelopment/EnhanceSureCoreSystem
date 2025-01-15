@@ -5,6 +5,8 @@
 
 **/bin/**
 **/obj/**
-
-/enhancesure/.vs
+/.vs
+/enhancesure/.vs/
 /enhancesure/Enhancesure.NGUI/.vscode
+/enhancesure/packages
+/enhancesure/Enhancesure.Application/Shared/Exceptions/RequestGenericExceptionHandler.cs

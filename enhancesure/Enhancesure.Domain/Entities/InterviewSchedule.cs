@@ -1,5 +1,5 @@
 ﻿using EnhanceSure.Domain.Common;
-using EnhanceSure.Domain.Enum;
+using EnhanceSure.Domain.Enums;
 
 namespace EnhanceSure.Domain.Entities {
     public class InterviewSchedule:BaseEntity {

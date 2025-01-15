@@ -20,9 +20,11 @@
     <Folder Include="Features\Interviewees\Commands\DeleteInterviewee\" />
     <Folder Include="Features\Interviewees\Commands\UpdateInterviewee\" />
     <Folder Include="Features\Interviewees\Queries\GetInterviewees\" />
-    <Folder Include="Features\Interviewers\Command\" />
+    <Folder Include="Features\Interviewers\Commands\" />
     <Folder Include="Features\Interviewers\Queries\" />
     <Folder Include="Features\InterviewSchedules\" />
+    <Folder Include="Features\Users\RegisterUsers\Queries\" />
+    <Folder Include="Features\Users\UserLogins\Queries\" />
     <Folder Include="Shared\Requests\" />
   </ItemGroup>
 

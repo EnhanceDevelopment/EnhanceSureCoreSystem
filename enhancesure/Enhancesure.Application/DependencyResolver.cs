@@ -11,7 +11,6 @@ namespace EnhanceSure.Application {
             services.AddAutoMapper(executingAssembly);        //for all executing Assembly
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));              // for MediatR V>V12.0
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
             //var intermediateServiceProvider = services.BuildServiceProvider();
             //var configService = intermediateServiceProvider.GetService<IConfigurationService>();
             //var configuration = configService?.GetConfiguration();
