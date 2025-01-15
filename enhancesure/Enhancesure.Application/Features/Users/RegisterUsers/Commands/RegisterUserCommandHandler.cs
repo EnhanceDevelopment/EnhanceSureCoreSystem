@@ -21,8 +21,8 @@ namespace EnhanceSure.Application.Features.Users.RegisterUsers.Commands {
         }
         public async Task<AppResponse<Unit>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            var validationResult= new RegisterUserCommandValidator().ValidateAsync(new RegisterUserDto());
-            if(!validationResult.IsCompletedSuccessfully) return Ok(Unit.Value,new string[] {validationResult?.Exception.Message});
+            var validationResult=await  new RegisterUserCommandValidator().ValidateAsync(request.RegisterUserDto);
+            if(!validationResult.IsValid) return Ok(Unit.Value, validationResult.Errors.Select(i => i.ErrorMessage).ToArray());
             User requestedUser = await _userRepository.GetUserByEmailId(request.RegisterUserDto.Email!);
 
             if(requestedUser!=null) return Ok(Unit.Value, new string[] { "User already exists." });
