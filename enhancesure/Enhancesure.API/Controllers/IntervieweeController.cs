@@ -3,6 +3,7 @@ using EnhanceSure.Application.Features.Interviewees.Commands.CreateInterviewee;
 using EnhanceSure.Application.Features.Interviewees.Queries.GetInterviewee;
 using EnhanceSure.Application.Shared.Responses;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnhanceSure.API.Controllers {
@@ -17,19 +18,22 @@ namespace EnhanceSure.API.Controllers {
         }
 
         [HttpPost]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<AppResponse<Guid>>> CreateIntervieweeAsync([FromBody] CreateIntervieweeDto interviewee)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Route("createInterviewee")]
+        public async Task<ActionResult<AppResponse<Guid>>> CreateIntervieweeAsync([FromBody] CreateIntervieweeDto interviewee,CancellationToken cancellationToken)
         {
             var command = new CreateIntevieweeCommand() { CreateIntervieweeDto = interviewee };
-            var response = await _mediator.Send(command);
+            var response = await _mediator.Send(command, cancellationToken);
             return Ok(response);
         }
         [HttpGet("{intervieweeId}")]
-        public async Task<ActionResult<AppResponse<Guid>>> GetIntervieweeAsync(Guid intervieweeId)
+        public async Task<ActionResult<AppResponse<Guid>>> GetIntervieweeAsync(Guid intervieweeId,CancellationToken cancellationToken)
         {
             var query = new GetIntervieweeQuery() { Id=intervieweeId};
-            var response = await _mediator.Send(query);
+            var response = await _mediator.Send(query,cancellationToken);
             return Ok(response);
         }        
     }

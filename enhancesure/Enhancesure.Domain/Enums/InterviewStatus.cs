@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Net.WebSockets;
 
-namespace EnhanceSure.Domain.Enum;
+namespace EnhanceSure.Domain.Enums;
 public enum InterviewStatus {
     [Display(Name="Canceled",Description="Canceled")]
     Canceled = 0,

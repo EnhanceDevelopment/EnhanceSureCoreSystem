@@ -4,6 +4,7 @@ using EnhanceSure.Persistance.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnhanceSure.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250111142524_jwt authentication")]
+    partial class jwtauthentication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,7 +229,7 @@ namespace EnhanceSure.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tbl_Roles", (string)null);
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("EnhanceSure.Domain.Entities.User", b =>
@@ -268,9 +271,6 @@ namespace EnhanceSure.Persistance.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Token")
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar");
@@ -282,7 +282,7 @@ namespace EnhanceSure.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tbl_Users", (string)null);
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("EnhanceSure.Domain.Entities.UserRole", b =>
@@ -315,7 +315,7 @@ namespace EnhanceSure.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("tbl_UserRoles", (string)null);
+                    b.ToTable("UserRoles", (string)null);
                 });
 
             modelBuilder.Entity("EnhanceSure.Domain.Entities.UserRole", b =>

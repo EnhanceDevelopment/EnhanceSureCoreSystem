@@ -35,6 +35,24 @@ namespace EnhanceSure.Application.Shared.Responses {
                 Messages=messages??new[] { "Success" }
             };
         }
+        public AppResponse<T> BadRequest<T>(T data, string[] messages = null)
+        {
+            return new AppResponse<T>
+            {
+                StatusCode=System.Net.HttpStatusCode.BadRequest,
+                Data=data,
+                Messages=messages??new[] { "Bad Request." }
+            };
+        }
+        public AppResponse<T> NotFound<T>(T data, string[] messages = null)
+        {
+            return new AppResponse<T>
+            {
+                StatusCode=System.Net.HttpStatusCode.NotFound,
+                Data=data,
+                Messages=messages??new[] { "Not Found." }
+            };
+        }
 
         public PaginatedAppResponse<T> Ok<T>(IEnumerable<T> data, int pageIndex, int pageSize, int? rowsCount = null, string[] messages = null)
         {
