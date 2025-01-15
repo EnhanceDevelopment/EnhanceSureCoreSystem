@@ -1,4 +1,5 @@
-﻿using EnhanceSure.Application.Contracts.Persistances;
+﻿using EnhanceSure.Application.Contracts.Infrastructure.Authentication;
+using EnhanceSure.Application.Contracts.Persistances;
 using EnhanceSure.Domain.Interfaces;
 using EnhanceSure.Domain.Interfaces.Common;
 using EnhanceSure.Persistance.Connections;
@@ -26,6 +27,7 @@ namespace EnhanceSure.Persistance {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IIntervieweeRepository, IntervieweeRepository>();
             services.AddScoped<IInterviewerRepository, InterviewerRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

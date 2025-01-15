@@ -1,4 +1,6 @@
-﻿namespace EnhanceSure.Domain.Common {
+﻿using EnhanceSure.Domain.Entities;
+
+namespace EnhanceSure.Domain.Common {
     public abstract class BaseEntity {
         public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -9,5 +11,9 @@
         {
             this.Id = Guid.NewGuid();
         }
+    }
+    public class AuditUser: User {
+        public Guid Id { get; set; }
+        public DateTime Username { get; set; }
     }
 }
