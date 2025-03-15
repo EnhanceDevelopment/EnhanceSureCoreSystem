@@ -1,0 +1,56 @@
+// navbar.component.scss
+@import "../assets/styles/variables";
+@import "../assets/styles/mixins";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; 
+  background-color: $white;
+  box-shadow: $box-shadow;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  margin: 0;
+  box-sizing: border-box; 
+  overflow: visible; 
+
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $primary-color;
+    text-decoration: none;
+    
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+
+  .nav-items {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    .login-button {
+      @include flex-center;
+      padding: 0.5rem 1.5rem;
+      background-color: $primary-color;
+      color: $white;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      white-space: nowrap; 
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+.login-options-container {
+  margin-top: 80px; // Adjust based on navbar height
+}

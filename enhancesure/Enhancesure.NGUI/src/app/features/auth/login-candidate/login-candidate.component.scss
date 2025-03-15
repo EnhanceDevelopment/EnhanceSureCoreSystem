@@ -1,0 +1,38 @@
+@import "../assets/styles/variables";
+@import "../assets/styles/mixins";
+
+.outer {
+  margin-top: 80px; // Offset for navbar
+  padding: 2rem;
+}
+
+.panel {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+
+  &.error {
+    border-color: red;
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+  }
+
+  .fa {
+    color: #666;
+  }
+}
+
+.bordert {
+  border-top: 1px solid #ddd;
+}

@@ -1,0 +1,56 @@
+@import "../assets/styles/variables";
+@import "../assets/styles/mixins";
+
+
+.login-options-container {
+    @include flex-center;
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 80px; // Offset for fixed navbar
+  
+    h1 {
+      font-size: 2.5rem;
+      color: $primary-color;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1.2rem;
+      color: lighten($text-color, 20%);
+      margin-bottom: 2rem;
+    }
+  
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 800px;
+  
+      .option-card {
+        background-color: $white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: $box-shadow;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+  
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+  
+        h2 {
+          font-size: 1.8rem;
+          color: $primary-color;
+          margin-bottom: 1rem;
+        }
+  
+        p {
+          font-size: 1rem;
+          color: $text-color;
+        }
+      }
+    }
+  }

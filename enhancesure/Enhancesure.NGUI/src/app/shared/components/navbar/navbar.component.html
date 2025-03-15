@@ -1,0 +1,9 @@
+<!-- navbar.component.html -->
+<nav class="navbar">
+  <div class="logo">
+    <a routerLink="/">EnhanceSure</a>
+  </div>
+  <div class="nav-items">
+    <a *ngIf="!isLoginPage" routerLink="/login-options" class="login-button">Login</a>
+  </div>
+</nav>

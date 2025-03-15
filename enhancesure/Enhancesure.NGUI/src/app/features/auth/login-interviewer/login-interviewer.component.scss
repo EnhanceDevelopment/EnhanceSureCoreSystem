@@ -1,0 +1,26 @@
+@import "../assets/styles/variables";
+@import "../assets/styles/mixins";
+
+
+.container {
+    margin-top: 80px; // Adjust based on navbar height
+  }
+.outer {
+    margin-top: 80px; // Offset for navbar
+    padding: 2rem;
+  }
+  
+  .panel {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+.btn-linkedin {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+  
+    &:hover {
+      background-color: darken(#0077b5, 10%);
+    }
+  }

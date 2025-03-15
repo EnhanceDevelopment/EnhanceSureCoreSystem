@@ -1,0 +1,25 @@
+// landing.component.scss
+@import "../assets/styles/variables";
+@import "../assets/styles/mixins";
+
+.landing-content {
+  margin-top: 80px; // Offset for fixed navbar
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+
+  .hero-section {
+    text-align: center;
+    padding: 4rem 0;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: $primary-color;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: lighten($text-color, 20%);
+    }
+  }
+}
