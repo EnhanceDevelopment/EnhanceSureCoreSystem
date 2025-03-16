@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - dev
+      - Github-Actions
   pull_request:
     branches:
       - main
@@ -40,3 +41,9 @@ jobs:
       run: |
         cd enhancesure  # Make sure you're in the solution folder
         dotnet publish enhancesure.sln --configuration Release --output ./publish  # Publish the app
+
+    - name: Upload published build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ims-server-published
+        path: enhancesure/publish  # Path to the published build output
