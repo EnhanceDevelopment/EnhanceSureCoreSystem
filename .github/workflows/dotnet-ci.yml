@@ -25,22 +25,22 @@ jobs:
     - name: Restore dependencies
       run: |
         cd enhancesure  # Navigate to the folder containing the .sln file
-        dotnet restore enhancesure.sln  # Restore the solution
+        dotnet restore EnhanceSure.sln  # Restore the solution
 
     - name: Build solution
       run: |
         cd enhancesure  # Ensure you're in the correct directory
-        dotnet build enhancesure.sln --configuration Release  # Build the solution in Release mode
+        dotnet build EnhanceSure.sln --configuration Release  # Build the solution in Release mode
 
     - name: Run tests
       run: |
         cd enhancesure  # Make sure you're in the solution folder
-        dotnet test enhancesure.sln --configuration Release  # Run tests
+        dotnet test EnhanceSure.sln --configuration Release  # Run tests
 
     - name: Publish
       run: |
         cd enhancesure  # Make sure you're in the solution folder
-        dotnet publish enhancesure.sln --configuration Release --output ./publish  # Publish the app
+        dotnet publish EnhanceSure.sln --configuration Release --output ./publish  # Publish the app
 
     - name: Upload published build artifact
       uses: actions/upload-artifact@v4
