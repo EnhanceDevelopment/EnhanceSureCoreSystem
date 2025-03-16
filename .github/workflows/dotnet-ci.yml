@@ -1,0 +1,42 @@
+name: .NET Core Build and Restore
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: |
+        cd enhancesure  # Navigate to the folder containing the .sln file
+        dotnet restore enhancesure.sln  # Restore the solution
+
+    - name: Build solution
+      run: |
+        cd enhancesure  # Ensure you're in the correct directory
+        dotnet build enhancesure.sln --configuration Release  # Build the solution in Release mode
+
+    - name: Run tests
+      run: |
+        cd enhancesure  # Make sure you're in the solution folder
+        dotnet test enhancesure.sln --configuration Release  # Run tests
+
+    - name: Publish
+      run: |
+        cd enhancesure  # Make sure you're in the solution folder
+        dotnet publish enhancesure.sln --configuration Release  # Publish the app
