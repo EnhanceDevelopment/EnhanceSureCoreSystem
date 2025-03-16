@@ -39,4 +39,10 @@ jobs:
     - name: Publish
       run: |
         cd enhancesure  # Make sure you're in the solution folder
-        dotnet publish enhancesure.sln --configuration Release  # Publish the app
+        dotnet publish enhancesure.sln --configuration Release --output ./artifacts  # Publish the app
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: enhancesure-artifacts
+        path: ./enhancesure/artifacts/
