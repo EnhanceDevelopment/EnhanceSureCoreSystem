@@ -42,7 +42,7 @@ jobs:
         dotnet publish enhancesure.sln --configuration Release --output ./artifacts  # Publish the app
 
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         name: enhancesure-artifacts
         path: ./enhancesure/artifacts/
