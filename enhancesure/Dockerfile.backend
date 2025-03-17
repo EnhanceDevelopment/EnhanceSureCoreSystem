@@ -1,0 +1,20 @@
+# Build Stage
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["EnhanceSure.API/EnhanceSure.API.csproj", "EnhanceSure.API/"]
+COPY ["EnhanceSure.Application/EnhanceSure.Application.csproj", "EnhanceSure.Application/"]
+COPY ["EnhanceSure.Infrastructure/EnhanceSure.Infrastructure.csproj", "EnhanceSure.Infrastructure/"]
+COPY ["EnhanceSure.Core/EnhanceSure.Core.csproj", "EnhanceSure.Core/"]
+COPY ["EnhanceSure.Persistance/EnhanceSure.Persistance.csproj", "EnhanceSure.Persistance/"]
+RUN dotnet restore "EnhanceSure.API/EnhanceSure.Server.csproj"
+COPY . .
+WORKDIR "/src/EnhanceSure.API"
+RUN dotnet build -c Release -o /app/build
+RUN dotnet publish -c Release -o /app/publish
+
+# Final Stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app/publish .
+EXPOSE 5000
+ENTRYPOINT ["dotnet", "EnhanceSure.API.dll"]
