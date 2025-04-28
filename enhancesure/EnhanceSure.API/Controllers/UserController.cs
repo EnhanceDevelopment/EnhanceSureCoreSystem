@@ -1,5 +1,7 @@
-﻿using EnhanceSure.Application.DTOs.Users.RegisterUsers;
+﻿using EnhanceSure.Application.DTOs.Users.ChangePasswords;
+using EnhanceSure.Application.DTOs.Users.RegisterUsers;
 using EnhanceSure.Application.DTOs.Users.UserLogins;
+using EnhanceSure.Application.Features.Users.ChangePasswords.Commands;
 using EnhanceSure.Application.Features.Users.RegisterUsers.Commands;
 using EnhanceSure.Application.Features.Users.UserLogins.Commands;
 using EnhanceSure.Application.Shared.Responses;
@@ -21,6 +23,23 @@ namespace EnhanceSure.API.Controllers {
         {
             var command = new UserLoginCommand() { UserLoginCommandDto=userLoginCommandDto};
             var response = await _mediator.Send(command,cancellationToken);
+            return Ok(response);
+        }
+        [HttpPost]
+        [Route("changepassword")]
+        public async Task<ActionResult<AppResponse<ChangePasswordResponseDto>>> ChangePasswordAsync([FromBody] ChangePasswordCommandDto changePasswordCommandDto,CancellationToken cancellationToken)
+        {
+            var command = new ChangePasswordCommand() { ChangePasswordCommandDto=changePasswordCommandDto };
+            var response = await _mediator.Send(command,cancellationToken);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("forgetpassword")]
+        public async Task<ActionResult<AppResponse<ChangePasswordResponseDto>>> ForgetPasswordAsync([FromBody] ChangePasswordCommandDto changePasswordCommandDto, CancellationToken cancellationToken)
+        {
+            var command = new ChangePasswordCommand() { ChangePasswordCommandDto=changePasswordCommandDto };
+            var response = await _mediator.Send(command, cancellationToken);
             return Ok(response);
         }
         [HttpPost]

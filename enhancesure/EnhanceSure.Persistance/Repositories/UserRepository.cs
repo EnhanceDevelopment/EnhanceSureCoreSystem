@@ -4,6 +4,7 @@ using EnhanceSure.Domain.Interfaces;
 using EnhanceSure.Persistance.DbContexts;
 using EnhanceSure.Persistance.Repositories.Common;
 using System.Text.RegularExpressions;
+using Dapper;
 using System.Text;
 
 namespace EnhanceSure.Persistance.Repositories {
@@ -16,7 +17,7 @@ namespace EnhanceSure.Persistance.Repositories {
 
         public bool CheckPassword(string? esistingPassword, string requestPassword)
         {
-            return BCrypt.Net.BCrypt.Verify(esistingPassword, requestPassword);
+            return BCrypt.Net.BCrypt.Verify(requestPassword, esistingPassword);
         }
 
         public string CheckPasswordValidation(string requestPassword)
@@ -37,7 +38,7 @@ namespace EnhanceSure.Persistance.Repositories {
             {
                 EmailId = $"{emailId}"
             };
-            var user = await _connection.QueryFirstOrDefaultAsync<User>(query, parameters);
+            var user = await connection.QueryFirstOrDefaultAsync<User>(query, parameters);
             return user;
         }
 

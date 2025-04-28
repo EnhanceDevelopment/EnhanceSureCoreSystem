@@ -4,6 +4,7 @@ using EnhanceSure.Persistance.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnhanceSure.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250427124621_error log table created")]
+    partial class errorlogtablecreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,35 +224,6 @@ namespace EnhanceSure.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tbl_Roles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("538e0449-fb03-446e-9bb7-03d53c3d5590"),
-                            CreatedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5333),
-                            CreatedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
-                            LastModifiedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5336),
-                            LastModifiedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
-                            RoleName = "User"
-                        },
-                        new
-                        {
-                            Id = new Guid("9ea0339d-ec5a-4a2d-af3c-e018939d4271"),
-                            CreatedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5348),
-                            CreatedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
-                            LastModifiedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5349),
-                            LastModifiedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
-                            RoleName = "Admin"
-                        },
-                        new
-                        {
-                            Id = new Guid("adc04a70-c8af-4a68-831e-2ac33dc9852f"),
-                            CreatedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5352),
-                            CreatedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
-                            LastModifiedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5353),
-                            LastModifiedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
-                            RoleName = "SuperAdmin"
-                        });
                 });
 
             modelBuilder.Entity("EnhanceSure.Domain.Entities.User", b =>

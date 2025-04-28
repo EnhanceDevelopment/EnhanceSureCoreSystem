@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EnhanceSure.Domain.Interfaces.Common {
     public interface IUnitOfWork: IDisposable {
+        Task StartTransaction(CancellationToken cancellationToken);
         Task<int> Commit(CancellationToken cancellationToken);
 
         Task Rollback();

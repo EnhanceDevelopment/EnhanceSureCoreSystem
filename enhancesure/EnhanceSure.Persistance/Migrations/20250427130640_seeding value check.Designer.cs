@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnhanceSure.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250111162905_user role and userole")]
-    partial class userroleanduserole
+    [Migration("20250427130640_seeding value check")]
+    partial class seedingvaluecheck
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,18 +34,16 @@ namespace EnhanceSure.Persistance.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("CreatedAtUct")
-                        .HasColumnType("datetime2");
-
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("ErrorCode")
-                        .HasColumnType("bigint");
+                    b.Property<string>("ErrorCode")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("ErrorMessage")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(max)");
 
                     b.Property<DateTime>("LastModifiedAt")
                         .HasColumnType("datetime2");
@@ -53,17 +51,13 @@ namespace EnhanceSure.Persistance.Migrations
                     b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Prefix")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(64)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ErrorLogs");
+                    b.ToTable("sys_ErrorLogs", (string)null);
                 });
 
             modelBuilder.Entity("EnhanceSure.Domain.Entities.InterviewSchedule", b =>
@@ -230,6 +224,35 @@ namespace EnhanceSure.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tbl_Roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("538e0449-fb03-446e-9bb7-03d53c3d5590"),
+                            CreatedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5333),
+                            CreatedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
+                            LastModifiedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5336),
+                            LastModifiedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
+                            RoleName = "User"
+                        },
+                        new
+                        {
+                            Id = new Guid("9ea0339d-ec5a-4a2d-af3c-e018939d4271"),
+                            CreatedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5348),
+                            CreatedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
+                            LastModifiedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5349),
+                            LastModifiedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
+                            RoleName = "Admin"
+                        },
+                        new
+                        {
+                            Id = new Guid("adc04a70-c8af-4a68-831e-2ac33dc9852f"),
+                            CreatedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5352),
+                            CreatedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
+                            LastModifiedAt = new DateTime(2025, 4, 27, 13, 6, 40, 47, DateTimeKind.Utc).AddTicks(5353),
+                            LastModifiedBy = new Guid("36673f44-bc5c-4a36-a81e-730edd9c9c60"),
+                            RoleName = "SuperAdmin"
+                        });
                 });
 
             modelBuilder.Entity("EnhanceSure.Domain.Entities.User", b =>
@@ -237,9 +260,6 @@ namespace EnhanceSure.Persistance.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ConformPassword")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");

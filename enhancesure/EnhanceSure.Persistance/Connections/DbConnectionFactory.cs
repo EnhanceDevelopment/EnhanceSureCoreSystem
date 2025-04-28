@@ -21,21 +21,9 @@ namespace EnhanceSure.Persistance.Connections {
                 throw new Exception($"Unable to connect to database. Please, contact your administrator.\n Error: {ex.Message}");
             }
         }
-        public async Task<IReadOnlyList<T>> QueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
-        {
-            return (await _connection.QueryAsync<T>(sql, param, transaction)).AsList();
-        }
-        public async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
-        {
-            return await _connection.QueryFirstOrDefaultAsync<T>(sql, param, transaction);
-        }
-        public async Task<T> QuerySingleAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
-        {
-            return await _connection.QuerySingleAsync<T>(sql, param, transaction);
-        }
         public IDbConnection CreateConnection()
         {
-            if(_connection.State != ConnectionState.Open)
+            if(_connection.State!=ConnectionState.Open)
             {
                 _connection.Open();
             }

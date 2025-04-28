@@ -112,6 +112,21 @@ namespace EnhanceSure.Persistance.DbContexts {
                         .HasForeignKey(ur => ur.RoleId)
                         .OnDelete(DeleteBehavior.Cascade);
             });
+            modelBuilder.Entity((EntityTypeBuilder<ErrorLog> mappings) =>
+            {
+                mappings.ToTable(PersistanceConstants.Tables.sysErrorLog);
+                mappings.Property(p => p.Id).IsRequired().HasColumnType("uniqueidentifier");
+                mappings.Property(p => p.ErrorCode).HasColumnType("varchar(20)");
+                mappings.Property(p => p.ErrorMessage).HasColumnType("varchar(max)");
+                mappings.Property(p => p.UserName).HasColumnType("nvarchar(64)");
+                mappings.Property(p => p.CreatedAt).HasColumnType("datetime2");
+                mappings.Property(p => p.CreatedBy).HasColumnType("uniqueidentifier");
+                mappings.Property(p => p.LastModifiedAt).HasColumnType("datetime2");
+                mappings.Property(p => p.LastModifiedBy).HasColumnType("uniqueidentifier");
+            });
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
