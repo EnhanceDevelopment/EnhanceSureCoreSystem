@@ -25,6 +25,9 @@ namespace EnhanceSure.Persistance.DbContexts {
         public DbSet<Interviewee> Interviewees { get; set; }
         public DbSet<Interviewer> Intervieweers { get; set; }
         public DbSet<InterviewSchedule> InterviewSchedules { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<ErrorLog> ErrorLogs { get; set; }
 
         //for Datatype information see: https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
@@ -64,10 +67,10 @@ namespace EnhanceSure.Persistance.DbContexts {
                 mappings.Property(p => p.LastModifiedBy).HasColumnType("uniqueidentifier");
 
                 // Define the relationship between User and UserRole
-                mappings.HasMany(u => u.UserRoles)
-                        .WithOne(ur => ur.User)
-                        .HasForeignKey(ur => ur.UserId)
-                        .IsRequired();
+                //mappings.HasMany(u => u.UserRoles)
+                //        .WithOne(ur => ur.User)
+                //        .HasForeignKey(ur => ur.UserId)
+                //        .IsRequired();
             });
 
             // Role model mapping
@@ -82,10 +85,10 @@ namespace EnhanceSure.Persistance.DbContexts {
                 mappings.Property(p => p.LastModifiedBy).HasColumnType("uniqueidentifier");
 
                 // Define the relationship between Role and UserRole
-                mappings.HasMany(r => r.UserRoles)
-                        .WithOne(ur => ur.Role)
-                        .HasForeignKey(ur => ur.RoleId)
-                        .IsRequired();
+                //mappings.HasMany(r => r.UserRoles)
+                //        .WithOne(ur => ur.Role)
+                //        .HasForeignKey(ur => ur.RoleId)
+                //        .IsRequired();
             });
 
             // UserRole model mapping (join table)
@@ -101,11 +104,13 @@ namespace EnhanceSure.Persistance.DbContexts {
                 // Define the foreign keys for UserRole
                 mappings.HasOne(ur => ur.User)
                         .WithMany(u => u.UserRoles)
-                        .HasForeignKey(ur => ur.UserId);
+                        .HasForeignKey(ur => ur.UserId)
+                        .OnDelete(DeleteBehavior.Cascade);
 
                 mappings.HasOne(ur => ur.Role)
                         .WithMany(r => r.UserRoles)
-                        .HasForeignKey(ur => ur.RoleId);
+                        .HasForeignKey(ur => ur.RoleId)
+                        .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }
