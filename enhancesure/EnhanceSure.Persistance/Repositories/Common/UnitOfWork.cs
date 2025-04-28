@@ -1,24 +1,49 @@
 ﻿using EnhanceSure.Domain.Interfaces.Common;
 using EnhanceSure.Persistance.DbContexts;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace EnhanceSure.Persistance.Repositories.Common {
     public class UnitOfWork: IUnitOfWork {
         private readonly ApplicationDbContext _dbContext;
+        private IDbContextTransaction _transaction;
         private bool _disposed;
 
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext=dbContext??throw new ArgumentNullException(nameof(dbContext));
         }
-
+        public async Task StartTransaction(CancellationToken cancellationToken)
+        {
+            if(_transaction!=null)
+                throw new InvalidOperationException("A transaction is already in progress.");
+            _transaction=await _dbContext.Database.BeginTransactionAsync(cancellationToken);
+        }
         public async Task<int> Commit(CancellationToken cancellationToken)
         {
-            return await _dbContext.SaveChangesAsync(cancellationToken);
+            if(_transaction==null)
+                return await _dbContext.SaveChangesAsync(cancellationToken);
+
+            try
+            {
+                var result = await _dbContext.SaveChangesAsync(cancellationToken);
+                await _transaction.CommitAsync(cancellationToken);
+                return result;
+            } catch(Exception ex)
+            {
+                await Rollback();
+                throw ex;
+            }
+
         }
 
-        public Task Rollback()
+        public async Task Rollback()
         {
-            return Task.CompletedTask;
+            if(_transaction!=null)
+            {
+                await _transaction.RollbackAsync();
+                _transaction.Dispose();
+                _transaction=null;
+            }
         }
 
         public void Dispose()
@@ -35,6 +60,7 @@ namespace EnhanceSure.Persistance.Repositories.Common {
                 {
                     //dispose managed resources
                     _dbContext.Dispose();
+                    _transaction?.Dispose();
                 }
             }
             //dispose unmanaged resources

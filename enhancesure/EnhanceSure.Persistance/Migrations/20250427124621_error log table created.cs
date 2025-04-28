@@ -6,11 +6,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EnhanceSure.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class userroleanduserole : Migration
+    public partial class errorlogtablecreated : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "sys_ErrorLogs",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ErrorCode = table.Column<string>(type: "varchar(20)", nullable: false),
+                    ErrorMessage = table.Column<string>(type: "varchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(64)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_sys_ErrorLogs", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "tbl_Roles",
                 columns: table => new
@@ -38,7 +56,6 @@ namespace EnhanceSure.Persistance.Migrations
                     Status = table.Column<int>(type: "integer", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ConformPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Token = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -93,6 +110,9 @@ namespace EnhanceSure.Persistance.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "sys_ErrorLogs");
+
             migrationBuilder.DropTable(
                 name: "tbl_UserRoles");
 

@@ -2,10 +2,18 @@
 using FluentValidation;
 using MediatR.Pipeline;
 using Application.Shared.Extensions;
+using EnhanceSure.Application.Contracts.Persistances;
 
 namespace EnhanceSure.Application.Shared.Exceptions {
     public class RequestGenericExceptionHandler<TRequest, TResponse, TException>: IRequestExceptionHandler<TRequest, TResponse, TException>
     where TException : Exception {
+        private readonly ILogger _logger;
+
+        public RequestGenericExceptionHandler(ILogger logger)
+        {
+            _logger=logger;
+        }
+
         public Task Handle(TRequest request,
             TException exception,
             RequestExceptionHandlerState<TResponse> state,
@@ -23,6 +31,7 @@ namespace EnhanceSure.Application.Shared.Exceptions {
                 {
                     appResponse.StatusCode=System.Net.HttpStatusCode.InternalServerError;
                     appResponse.Messages=new string[] { exception.Flatten() };
+                    _logger.LogErrorAsync(exception, cancellationToken, Domain.Enum.ErrorCategory.UNH);
                 }
 
                 state.SetHandled(response);

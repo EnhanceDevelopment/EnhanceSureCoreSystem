@@ -23,7 +23,7 @@
     <Folder Include="Features\Interviewers\Commands\" />
     <Folder Include="Features\Interviewers\Queries\" />
     <Folder Include="Features\InterviewSchedules\" />
-    <Folder Include="Features\Users\ChangePasswords\Queries1\" />
+    <Folder Include="Features\Users\ChangePasswords\Queries\" />
     <Folder Include="Features\Users\RegisterUsers\Queries\" />
     <Folder Include="Features\Users\UserLogins\Queries\" />
     <Folder Include="Shared\Requests\" />

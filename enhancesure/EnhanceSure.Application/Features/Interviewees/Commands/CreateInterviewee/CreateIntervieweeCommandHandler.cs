@@ -22,15 +22,11 @@ namespace EnhanceSure.Application.Features.Interviewees.Commands.CreateInterview
 
         public async Task<AppResponse<IntervieweeDto>> Handle(CreateIntevieweeCommand request, CancellationToken cancellationToken)
         {
-            IntervieweeDto response=new IntervieweeDto();
-            var validator = new CreateIntervieweeCommandValidator();
-            var result= await validator.ValidateAsync(request, cancellationToken);
-            if(!result.IsValid)
-                return BadRequest<IntervieweeDto>(result.Errors.Select(i => i.ErrorMessage).ToArray<string>());
+            IntervieweeDto response = new IntervieweeDto();
             var reqData = _mapper.Map<Interviewee>(request.CreateIntervieweeDto);
             var interviewee = await _interviewee.AddAsync(reqData);
             await _unitOfWork.Commit(cancellationToken);
-            response = _mapper.Map<IntervieweeDto>(interviewee);
+            response=_mapper.Map<IntervieweeDto>(interviewee);
             return Ok(response, new string[] { "Interviewee created successfully." });
         }
     }

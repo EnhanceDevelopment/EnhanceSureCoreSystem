@@ -28,6 +28,7 @@ namespace EnhanceSure.Persistance {
             services.AddScoped<IIntervieweeRepository, IntervieweeRepository>();
             services.AddScoped<IInterviewerRepository, InterviewerRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ILogger, Logger>();
             return services;
         }
     }
