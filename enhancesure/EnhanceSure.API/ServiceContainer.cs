@@ -1,8 +1,7 @@
-﻿using EnhanceSure.API.OptionSetup;
-using EnhanceSure.Application.Contracts.Infrastructure.Authentication;
-using EnhanceSure.Infrastructure.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using EnhanceSure.API.Common.Configuration;
+using EnhanceSure.API.OptionSetup;
 using EnhanceSure.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace EnhanceSure.API {
     public static class ServiceContainer {
@@ -13,6 +12,13 @@ namespace EnhanceSure.API {
             services.ConfigureOptions<JwtBearerOptionsSetup>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer();
+
+            services.AddTransient<IEnvironmentService, EnvironmentService>();
+            services.AddTransient<IConfigurationService, ConfigurationService>
+                (provider => new ConfigurationService(provider.GetService<IEnvironmentService>())
+                {
+                    CurrentDirectory = Directory.GetCurrentDirectory()
+                });
 
             return services;
         }

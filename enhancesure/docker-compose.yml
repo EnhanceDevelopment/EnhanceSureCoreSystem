@@ -1,27 +1,53 @@
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: ims-sqlserver
-    environment:
-      SA_PASSWORD: "YourStrong!Passw0rd"
-      ACCEPT_EULA: "Y"
-    ports:
-      - "1433:1433"
-    volumes:
-      - sqlserver-data:/var/opt/mssql
-      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-
-  backend:
+  enhancesure-api:
     build:
       context: .
-      dockerfile: Dockerfile.backend
-    container_name: ims-backend
-    environment:
-      - ConnectionStrings__DefaultConnection=Server=ims-sqlserver,1433;Database=IMS;User=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
+      dockerfile: EnhanceSure.API/Dockerfile
+      args:
+        BUILD_ENV: ${BUILD_ENV}
+    image: enhancesure-api-${BUILD_ENV}:${BUILD_ENV}
+    container_name: enhancesure-api-${BUILD_ENV}
     ports:
-      - "5000:5000"
+      - "${HTTP_PORT}:${HTTP_PORT}"
+      - "${HTTPS_PORT}:${HTTPS_PORT}"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - "ConnectionStrings__EnhanceSureDbConnection=Server=enhancesure-sql,${SQL_PORT};Database=${DB_NAME};User Id=sa;Password=${DB_PASSWORD};Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True"
+      - ASPNETCORE_Kestrel__Endpoints__Https__Url=https://+:${HTTPS_PORT}
+      - ASPNETCORE_Kestrel__Endpoints__Https__Certificate__Path=/https/https-cert.crt
+      - ASPNETCORE_Kestrel__Endpoints__Https__Certificate__KeyPath=/https/https-cert.key
+
     depends_on:
-      - sqlserver
-  
+      - enhancesure-sql
+    networks:
+      - enhancesure_networks
+    restart: unless-stopped
+
+    volumes:
+      - ./certificates/https_enhancesure_cert.crt:/https/https-cert.crt:ro
+      - ./certificates/https_enhancesure_cert.key:/https/https-cert.key:ro
+
+
+
+  enhancesure-sql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: enhancesure-sql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "${SQL_PORT}:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+      - ./backups:/var/opt/mssql/data
+    networks:
+      - enhancesure_networks
+    restart: unless-stopped
+
+networks:
+  enhancesure_networks:
+
 volumes:
-  sqlserver-data:
+  mssql_data: 
+    name: enhancesure-${BUILD_ENV}
+    external: true
