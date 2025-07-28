@@ -30,6 +30,7 @@
   </ItemGroup>
 	
 	<ItemGroup>
+		<ProjectReference Include="..\Common.Configuration\Common.Configuration.csproj" />
 		<ProjectReference Include="..\EnhanceSure.Application\EnhanceSure.Application.csproj" />
 	</ItemGroup>
 

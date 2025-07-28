@@ -4,6 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>0070f652-1e9e-48ee-a54a-f758bd35b5e4</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +18,7 @@
 	  </PackageReference>
 	  <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.1" />
 	  <PackageReference Include="Microsoft.Identity.Client" Version="4.67.2" />
+	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
 	  <PackageReference Include="System.Formats.Asn1" Version="8.0.1" />
 	  <PackageReference Include="System.Text.Json" Version="8.0.5" />
@@ -25,5 +29,11 @@
     <ProjectReference Include="..\EnhanceSure.Infrastructure\EnhanceSure.Infrastructure.csproj" />
     <ProjectReference Include="..\EnhanceSure.Persistance\EnhanceSure.Persistance.csproj" />
   </ItemGroup>
+
+  <!--<ItemGroup>
+  	<None Update="appsettings*.json">
+  		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  	</None>
+  </ItemGroup>-->
 
 </Project>
