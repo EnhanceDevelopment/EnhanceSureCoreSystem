@@ -1,0 +1,19 @@
+services:
+  enhancesure-api:
+    environment:
+      - BUILD_ENV=dev
+      - ASPNETCORE_ENVIRONMENT=${BUILD_ENV}
+      - ASPNETCORE_HTTP_PORTS=5117
+      - ASPNETCORE_HTTPS_PORTS=7262
+      - DB_NAME=EnhanceSure_Dev
+      - SQL_PORT=1434
+      - DB_PASSWORD=EnhanceSure@123!
+    ports:
+      - "5117:5117"
+      - "7262:7262"
+       
+    # volumes:
+    #   - ${APPDATA}/Microsoft/UserSecrets/0070f652-1e9e-48ee-a54a-f758bd35b5e4:/home/app/.microsoft/usersecrets:ro
+    #   - ${APPDATA}/Microsoft/UserSecrets/0070f652-1e9e-48ee-a54a-f758bd35b5e4:/root/.microsoft/usersecrets:ro
+    #   - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+    #   - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

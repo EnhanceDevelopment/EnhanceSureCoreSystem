@@ -1,4 +1,5 @@
-﻿using EnhanceSure.Persistance.DbContexts;
+﻿using EnhanceSure.API.Common.Configuration;
+using EnhanceSure.Persistance.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -8,12 +9,26 @@ namespace EnhanceSure.Persistance {
     public class ApplicationDbContextFactory:IDesignTimeDbContextFactory<ApplicationDbContext> {
         public ApplicationDbContext CreateDbContext(string[] args)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+            //var environment = ParseEnvironment(args);
+            //IConfigurationRoot configuration = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("appsettings.json")
+            //    .Build();
+            //var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            //var connectionString = configuration.GetConnectionString(Constants.DbConnectionConstants.ConnectionStringName);
+            //builder.UseSqlServer(connectionString);
+            //return new ApplicationDbContext(builder.Options);
+
+
+            var environment = ParseEnvironment(args);
+            Console.WriteLine($"environment - {environment}");
+
+            var environmentService = new EnvironmentService(environment);
+            var configurationService = new ConfigurationService(environmentService);
+            Console.WriteLine($"directory - {Directory.GetCurrentDirectory()}");
+            var connectionString = configurationService.GetConfiguration(Directory.GetCurrentDirectory()).GetConnectionString(Constants.DbConnectionConstants.ConnectionStringName);
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            var connectionString = configuration.GetConnectionString(Constants.DbConnectionConstants.ConnectionStringName);
+
             builder.UseSqlServer(connectionString);
             return new ApplicationDbContext(builder.Options);
 

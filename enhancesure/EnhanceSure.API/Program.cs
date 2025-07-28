@@ -1,4 +1,5 @@
 using EnhanceSure.API;
+using EnhanceSure.API.Extensions;
 using EnhanceSure.Application;
 using EnhanceSure.Persistance;
 using Microsoft.OpenApi.Models;
@@ -62,11 +63,13 @@ if(app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.ApplyMigrations();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
