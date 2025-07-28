@@ -1,5 +1,6 @@
 ﻿using EnhanceSure.Domain.Interfaces.Common;
 using EnhanceSure.Persistance.DbContexts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace EnhanceSure.Persistance.Repositories.Common {
@@ -45,6 +46,25 @@ namespace EnhanceSure.Persistance.Repositories.Common {
                 _transaction=null;
             }
         }
+        //public void Rollback()
+        //{
+        //    foreach(var entry in _dbContext.ChangeTracker.Entries())
+        //    {
+        //        switch(entry.State)
+        //        {
+        //            case EntityState.Added:
+        //                entry.State=EntityState.Detached;
+        //                break;
+        //            case EntityState.Modified:
+        //            case EntityState.Deleted:
+        //                entry.Reload();
+        //                break;
+        //        }
+        //    }
+        //    // If explicit database transactions are used, rollback here.
+        //    // For EF Core, SaveChangesAsync() handles transaction implicitly
+        //    // and an exception will prevent commit.
+        //}
 
         public void Dispose()
         {
