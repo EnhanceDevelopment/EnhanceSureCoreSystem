@@ -1,6 +1,5 @@
 ﻿using EnhanceSure.Domain.Interfaces.Common;
 using EnhanceSure.Persistance.DbContexts;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace EnhanceSure.Persistance.Repositories.Common {

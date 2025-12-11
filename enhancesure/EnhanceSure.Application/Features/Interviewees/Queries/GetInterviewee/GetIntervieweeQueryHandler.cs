@@ -5,6 +5,7 @@ using EnhanceSure.Application.Shared.Responses;
 using EnhanceSure.Domain.Entities;
 using EnhanceSure.Domain.Interfaces;
 using MediatR;
+using Dapper;
 
 namespace EnhanceSure.Application.Features.Interviewees.Queries.GetInterviewee {
     public class GetIntervieweeQueryHandler : RequestHandlerBase, IRequestHandler<GetIntervieweeQuery, AppResponse<GetIntervieweeDto>>

@@ -42,7 +42,7 @@ namespace EnhanceSure.Application.Features.Users.RegisterUsers.Commands {
                 await _userRepository.AddAsync(user);
 
                 //Creating UserRole and assigning User as Default Role
-                var query = $@"SELECT * FROM tbl_Roles WHERE RoleName= 'User'";
+                var query = $@"SELECT * FROM tbl_Roles WHERE Name= 'User'";
                 var role = await connection.QueryFirstOrDefaultAsync<Role>(query);
                 var userRole = new UserRole { UserId=user.Id, RoleId=role!.Id, };
                 await _userRoleRepository.AddAsync(userRole);
